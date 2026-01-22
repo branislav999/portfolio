@@ -1,4 +1,3 @@
-// Initialize EmailJS
 (function () {
   emailjs.init("zB1RBM7_6bFgBO5At");
 })();
@@ -10,7 +9,6 @@ function toggleExperience(button) {
   description.classList.toggle("expanded");
 }
 
-// Tech stack infinite scroll
 document.addEventListener("DOMContentLoaded", function () {
   const techScroll = document.querySelector(".tech-scroll");
   if (
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Projects carousel
 let currentProjectIndex = 0;
 
 function scrollProjects(direction) {
@@ -80,7 +77,6 @@ function updateArrows(totalCards) {
   nextBtn.classList.toggle("disabled", currentProjectIndex >= totalCards - 2);
 }
 
-// Initialize on load
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.getElementById("projectsGrid");
   if (grid) {
@@ -89,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Contact form handling
 document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
 

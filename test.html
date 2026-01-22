@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Morgan - Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-main: #f6f6f6;
+        --bg-card: #ffffff;
+        --text-primary: #000000d6;
+        --text-secondary: #00000090;
+        --text-tertiary: #000000a3;
+        --border-color: #0000001f;
+        --accent-green: #4ade80;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg-main);
+        color: var(--text-secondary);
+        line-height: 1.5;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* MAIN CENTERED CONTAINER */
+      .page-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 220px;
+        display: flex;
+        gap: 0;
+        position: relative;
+      }
+
+      /* SIDEBAR - LEFT SIDE, STICKY */
+      .sidebar {
+        width: 224px;
+        position: sticky;
+        top: 40px;
+        align-self: flex-start;
+        padding: 12px;
+        background: var(--bg-card);
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        flex-shrink: 0;
+      }
+
+      .profile-image {
+        width: 100%;
+        aspect-ratio: 0.93 / 1;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-bottom: 16px;
+      }
+
+      .profile-name {
+        font-size: 24px;
+        font-weight: 500;
+        color: var(--text-primary);
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+
+      .profile-name span {
+        display: block;
+      }
+
+      .profile-title {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+        line-height: 1.4;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent-green);
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      /* 
+      @frames pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      } */
+
+      .location {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+        text-decoration: none;
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--border-color);
+        margin: 20px 0;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin-bottom: 14px;
+        transition: color 0.2s;
+        letter-spacing: -0.04em;
+      }
+
+      .contact-item:hover {
+        color: var(--text-primary);
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .btn-primary {
+        background: var(--text-primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #000;
+        transform: translateY(-1px);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border: 1.5px solid var(--border-color);
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--text-primary);
+      }
+
+      /* MAIN CONTENT - RIGHT SIDE */
+      .main-content {
+        flex: 1;
+        padding-left: 40px;
+        overflow-x: hidden;
+      }
+
+      .section {
+        margin-bottom: 56px;
+      }
+
+      .section-label {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--text-primary);
+        margin-bottom: 24px;
+        padding: 3px 10px;
+        /* background: var(--bg-card); */
+        background: transparent;
+        border-radius: 6px;
+        display: inline-block;
+        border: 1px solid var(--border-color);
+      }
+
+      .section-text {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+      }
+
+      /* SKILLS */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .skill-tag {
+        padding: 5px 14px;
+        background: var(--bg-card);
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        transition: transform 0.2s;
+      }
+
+      /* .skill-tag:hover {
+        transform: translateY(-2px);
+      } */
+
+      /* EXPERIENCE CARDS */
+      .experience-item {
+        background: var(--bg-card);
+        border-radius: 12px;
+        padding: 0;
+        margin-bottom: 20px;
+        display: flex;
+        gap: 0;
+        transition: all 0.3s ease;
+        align-items: flex-start;
+        overflow: hidden;
+        min-height: 56px; /* Add this */
+        border: 1px dashed var(--border-color);
+      }
+
+      .experience-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 56px; /* Change from fixed height */
+        padding: 50px 16px 8px 16px;
+        justify-content: flex-start; /* Change from center */
+        padding-top: 8px; /* Ensure consistent top padding */
+        position: relative;
+      }
+
+      .company-logo {
+        width: 48px; /* Reduced from 63px */
+        height: 48px; /* Reduced from 63px */
+        border-radius: 8px;
+        flex-shrink: 0;
+        object-fit: contain;
+        margin: 8px; /* Add margin around the image */
+      }
+
+      .job-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .company-name {
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+
+      .experience-top {
+        display: flex;
+        gap: 0;
+        align-items: flex-start;
+      }
+
+      .experience-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .experience-date-wrapper {
+        position: absolute;
+        right: 16px;
+        top: 18px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .job-date {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .expand-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 4px;
+        margin-left: 8px;
+        transition: all 0.3s;
+        flex-shrink: 0;
+      }
+
+      .expand-btn:hover {
+        color: var(--text-primary);
+      }
+
+      .expand-btn.expanded {
+        transform: rotate(180deg);
+      }
+
+      /* .experience-description {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding-top: 0;
+        margin-left: -50px;
+      }
+
+      .experience-description.expanded {
+        max-height: 500px;
+        padding-top: 16px;
+      } */
+
+      .experience-description {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition:
+          grid-template-rows 0.3s ease,
+          padding 0.3s ease;
+        overflow: hidden;
+        margin-left: -50px;
+        /* border-top: 1px dashed var(--border-color); */
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .experience-description.expanded {
+        grid-template-rows: 1fr;
+        padding-top: 18px;
+      }
+
+      .experience-description > p {
+        min-height: 0;
+      }
+
+      .experience-description p {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+      }
+
+      /* TECH STACK */
+      /* TECH STACK - INFINITE SCROLL */
+      .tech-scroll-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          black 10%,
+          black 90%,
+          transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent 0%,
+          black 10%,
+          black 90%,
+          transparent 100%
+        );
+      }
+
+      .tech-scroll {
+        display: flex;
+        width: max-content;
+        gap: 48px;
+        animation: scroll 50s linear infinite;
+      }
+
+      .tech-item img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      @keyframes scroll {
+        to {
+          transform: translate(calc(-50% - 24px));
+        }
+      }
+
+      .tech-scroll-container:hover .tech-scroll {
+        animation-play-state: paused;
+      }
+
+      /* PROJECTS */
+      .projects-section {
+        position: relative;
+      }
+
+      .projects-scroll-container {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+
+      .projects-grid {
+        display: flex;
+        gap: 10px;
+        transition: transform 0.4s ease;
+        scroll-behavior: smooth;
+      }
+
+      .project-card {
+        min-width: 160px;
+        max-width: 220px;
+        background: var(--bg-card);
+        border-radius: 12px;
+        overflow: visible;
+        transition: transform 0.2s;
+        cursor: pointer;
+        flex-shrink: 0;
+        padding: 6px;
+      }
+
+      /* .project-card:hover {
+        transform: translateY(-6px);
+      } */
+
+      .project-image {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+        background: #ddd;
+        border-radius: 8px;
+      }
+
+      .project-content {
+        padding: 8px;
+      }
+
+      .project-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .project-description {
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: gap 0.2s;
+        border: 1px solid var(--border-color);
+        padding: 2px 4px;
+        border-radius: 6px;
+      }
+
+      .project-link:hover {
+        gap: 10px;
+      }
+
+      /* Navigation Arrows */
+      .projects-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .nav-arrow {
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(160, 160, 160, 0.7);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+          border-color 0.15s ease;
+        pointer-events: auto;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        color: white;
+      }
+
+      .nav-arrow.visible {
+        opacity: 1;
+      }
+
+      .nav-arrow:active {
+        background: rgba(180, 180, 180, 0.5);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: scale(0.85);
+      }
+
+      .nav-arrow svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      #prevProject {
+        left: calc(220px - 48px - 155px); /* Move more to the left */
+      }
+
+      #nextProject {
+        left: calc(
+          220px + 24px + 220px - 48px + 26px
+        ); /* Adjust to not overflow right */
+      }
+
+      /* EDUCATION / TIMELINE */
+      .timeline-item {
+        display: flex;
+        gap: 16px;
+        background: var(--bg-card);
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+      }
+
+      .timeline-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+
+      .timeline-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .timeline-content {
+        flex: 1;
+      }
+
+      .timeline-content h3 {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .timeline-content p {
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+
+      .timeline-date {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        white-space: nowrap;
+        margin-left: auto;
+      }
+
+      /* LINKS SECTION */
+      .links-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .link-card {
+        background: var(--bg-card);
+        padding: 20px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-decoration: none;
+        color: var(--text-primary);
+        font-size: 15px;
+        font-weight: 400;
+        transition: all 0.2s;
+        border: 1px solid var(--border-color);
+      }
+
+      .link-card:hover {
+        border-color: var(--text-primary);
+      }
+
+      .link-card svg {
+        color: var(--text-secondary);
+        transition: all 0.2s;
+      }
+
+      .link-card:hover svg {
+        color: var(--text-primary);
+        transform: translate(2px, -2px);
+      }
+
+      .link-card-full {
+        grid-column: 1 / -1;
+      }
+
+      @media (max-width: 900px) {
+        .links-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* CONTACT FORM */
+      .contact-form {
+        background: var(--bg-card);
+        padding: 24px;
+        border-radius: 12px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1.5px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        color: var(--text-primary);
+        background: var(--bg-main);
+        transition: border-color 0.2s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--text-primary);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: var(--text-secondary);
+        opacity: 0.6;
+      }
+
+      .contact-form .btn {
+        margin-top: 8px;
+        cursor: pointer;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1200px) {
+        .page-wrapper {
+          padding: 40px 100px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .page-wrapper {
+          flex-direction: column;
+          padding: 24px;
+        }
+
+        .sidebar {
+          position: relative;
+          width: 100%;
+          max-width: 600px;
+          margin: 0 auto 40px;
+          top: 0;
+        }
+
+        .main-content {
+          padding-left: 0;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <img
+          src="./slike/profile-cropped.png"
+          alt="Profile"
+          class="profile-image"
+        />
+
+        <h1 class="profile-name">
+          <span>Hello I'm</span>
+          <span>Branislav Bogosavac</span>
+        </h1>
+
+        <p class="profile-title">Full-Stack Software Engineer</p>
+
+        <div class="status">
+          <span class="status-dot"></span>
+          Available for work
+        </div>
+
+        <a href="#" class="location">
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+          Provo, Utah
+        </a>
+
+        <div class="divider"></div>
+
+        <a href="mailto:bbogosavac1999@gmail.com" class="contact-item">
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+          bbogosavac1999@gmail.com
+        </a>
+
+        <a href="tel:208-221-7485" class="contact-item">
+          <svg
+            class="icon"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            />
+          </svg>
+          (208) 221-7485
+        </a>
+
+        <a
+          href="./resume/Branislav Bogosavac Resume.pdf"
+          class="btn btn-secondary"
+          download="Branislav_Bogosavac_Resume"
+          >Download Resume</a
+        >
+        <a href="#contact" class="btn btn-primary">Contact Me</a>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- About -->
+        <section class="section">
+          <div class="section-label">About</div>
+          <p class="section-text">
+            I am a Full-Stack Software Engineer with experience in large
+            enterprise codebases, full-stack development, and cloud-based
+            architectures.
+          </p>
+          <p class="section-text">
+            With a proven track record maintaining production systems,
+            integrating third-party APIs, and delivering features within
+            established engineering standards, I bring both technical expertise
+            and practical problem-solving to every project.
+          </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+          <div class="section-label">Skills</div>
+          <div class="skills-grid">
+            <div class="skill-tag">C#</div>
+            <div class="skill-tag">TypeScript</div>
+            <div class="skill-tag">JavaScript</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">React</div>
+            <div class="skill-tag">ASP.NET</div>
+            <div class="skill-tag">Node.js</div>
+            <div class="skill-tag">PostgreSQL</div>
+            <div class="skill-tag">AWS</div>
+            <div class="skill-tag">Git</div>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section">
+          <div class="section-label">Experience</div>
+
+          <!-- Second experience item -->
+          <div class="experience-item">
+            <img
+              src="./slike/leavitt-logo.png"
+              alt="Catalog"
+              class="company-logo"
+            />
+            <div class="experience-content">
+              <h3 class="job-title">Leavitt Software Solutions</h3>
+              <p class="company-name">Junior Software Engineer</p>
+              <div class="experience-date-wrapper">
+                <div class="job-date">Aug 24 - Present</div>
+                <button class="expand-btn" onclick="toggleExperience(this)">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="experience-description">
+                <p>
+                  Develop and maintain enterprise web applications using ASP.NET
+                  (C#) backend and LitHTML/TypeScript frontend within a large,
+                  shared codebase.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <img
+              src="./slike/savac plus.jpg"
+              alt="Catalog"
+              class="company-logo"
+            />
+            <div class="experience-content">
+              <h3 class="job-title">Savac Plus</h3>
+              <p class="company-name">Founder & Lead Engineer</p>
+              <div class="experience-date-wrapper">
+                <div class="job-date">June 25 - Present</div>
+                <button class="expand-btn" onclick="toggleExperience(this)">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="experience-description">
+                <p>
+                  Built a production-ready AI SaaS for automated sales-call
+                  analysis with React/TypeScript, Node.js/Express, PostgreSQL,
+                  and AWS S3, currently deployed and used by a leading
+                  enterprise.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <img
+              src="./slike/brinks-logo.png"
+              alt="Catalog"
+              class="company-logo"
+            />
+            <div class="experience-content">
+              <h3 class="job-title">Brinks Home Security</h3>
+              <p class="company-name">Technician</p>
+              <div class="experience-date-wrapper">
+                <div class="job-date">Sep 23 - Aug 24</div>
+                <button class="expand-btn" onclick="toggleExperience(this)">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="experience-description">
+                <p>
+                  Independently installed 400+ residential security systems.
+                  Troubleshot hardware/software issues.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="section">
+          <div class="section-label">Tech stack</div>
+          <div class="tech-scroll-container">
+            <div class="tech-scroll">
+              <div class="tech-item" title=".NET">
+                <img src="./tech-stack/net.png" alt=".NET" />
+              </div>
+              <div class="tech-item" title="AWS">
+                <img src="./tech-stack/aws.png" alt="AWS" />
+              </div>
+              <div class="tech-item" title="C#">
+                <img src="./tech-stack/csharp.png" alt="C#" />
+              </div>
+              <div class="tech-item" title="Git">
+                <img src="./tech-stack/git.png" alt="Git" />
+              </div>
+              <div class="tech-item" title="JavaScript">
+                <img src="./tech-stack/javascript.png" alt="JavaScript" />
+              </div>
+              <div class="tech-item" title="lit-html">
+                <img src="./tech-stack/lit.svg" alt="lit-html" />
+              </div>
+              <div class="tech-item" title="MongoDB">
+                <img src="./tech-stack/mongo.png" alt="MongoDB" />
+              </div>
+              <div class="tech-item" title="Node.js">
+                <img src="./tech-stack/node.png" alt="Node.js" />
+              </div>
+              <div class="tech-item" title="Python">
+                <img src="./tech-stack/python.png" alt="Python" />
+              </div>
+              <div class="tech-item" title="React">
+                <img src="./tech-stack/react.png" alt="React" />
+              </div>
+              <div class="tech-item" title="SQL">
+                <img src="./tech-stack/sql.png" alt="SQL" />
+              </div>
+              <div class="tech-item" title="TypeScript">
+                <img src="./tech-stack/typescript.svg" alt="TypeScript" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects -->
+        <section class="section projects-section">
+          <div class="section-label">Projects</div>
+
+          <div class="projects-nav">
+            <button
+              class="nav-arrow"
+              id="prevProject"
+              onclick="scrollProjects('prev')"
+            >
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+            <button
+              class="nav-arrow"
+              id="nextProject"
+              onclick="scrollProjects('next')"
+            >
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="projects-scroll-container">
+            <div class="projects-grid" id="projectsGrid">
+              <!-- Your existing project cards here -->
+              <div class="project-card">
+                <img
+                  class="project-image"
+                  src="./slike/savacplusimage.jpg"
+                  alt="Savac Plus Image"
+                />
+                <div class="project-content">
+                  <h3 class="project-title">Savac Plus</h3>
+                  <p class="project-description">
+                    Production AI SaaS platform for automated sales call
+                    analysis with multi-tenant architecture and advanced API
+                    orchestration.
+                  </p>
+                  <a href="#" class="project-link">
+                    Click to view
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 19L19 5M19 5H10M19 5v9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="project-card">
+                <img
+                  class="project-image"
+                  src="./slike/slova.png"
+                  alt="Language"
+                />
+                <div class="project-content">
+                  <h3 class="project-title">Learn Serbian</h3>
+                  <p class="project-description">
+                    Platform for learning Serbian language
+                  </p>
+                  <a href="#" class="project-link">
+                    Click to view
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 19L19 5M19 5H10M19 5v9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="project-card">
+                <img
+                  class="project-image"
+                  src="./slike/wordle_og_1200x630.png"
+                  alt="Savac Plus Image"
+                />
+                <div class="project-content">
+                  <h3 class="project-title">Вордл</h3>
+                  <p class="project-description">
+                    Serbian version of The New York Times classic game- Wordle.
+                  </p>
+                  <a href="#" class="project-link">
+                    Click to view
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 19L19 5M19 5H10M19 5v9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="project-card">
+                <img
+                  class="project-image"
+                  src="./slike/savacplusimage.jpg"
+                  alt="Savac Plus Image"
+                />
+                <div class="project-content">
+                  <h3 class="project-title">Slate</h3>
+                  <p class="project-description">
+                    A sleek and responsive landing page designed for modern
+                    startups to showcase their products effectively.
+                  </p>
+                  <a href="#" class="project-link">
+                    Click to view
+                    <svg
+                      width="14"
+                      height="14"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 19L19 5M19 5H10M19 5v9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+          <div class="section-label">Education</div>
+
+          <div class="experience-item">
+            <img src="./slike/byui.png" alt="University" class="company-logo" />
+            <div class="experience-content">
+              <h3 class="job-title">Brigham Young University - Idaho</h3>
+              <p class="company-name">BS in Software Engineering • GPA: 3.9</p>
+              <div class="experience-date-wrapper">
+                <div class="job-date">Apr 21 - Apr 25</div>
+                <button class="expand-btn" onclick="toggleExperience(this)">
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="experience-description">
+                <p>
+                  Completed comprehensive coursework including Data Structures &
+                  Algorithms (Python/C++), Object-Oriented Programming (C++/C#),
+                  Web Development (JavaScript/Node.js/Express/Angular), Database
+                  Systems (SQL/MongoDB). Graduated with honors.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Links -->
+        <section class="section">
+          <div class="section-label">Links</div>
+
+          <div class="links-grid">
+            <a
+              href="https://cal.com/bane-jdqppv"
+              target="_blank"
+              class="link-card"
+            >
+              <span>Book a call</span>
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 19L19 5M19 5H10M19 5v9"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.instagram.com/bane.9/"
+              target="_blank"
+              class="link-card"
+            >
+              <span>Instagram</span>
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 19L19 5M19 5H10M19 5v9"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/branislav-bogosavac-47019b1b8?originalSubdomain=rs"
+              target="_blank"
+              class="link-card link-card-full"
+            >
+              <span>LinkedIn</span>
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 19L19 5M19 5H10M19 5v9"
+                />
+              </svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="section" id="contact">
+          <div class="section-label">Contact</div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Your name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="your.email@example.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder="Your message..."
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script>
+      function toggleExperience(button) {
+        button.classList.toggle("expanded");
+        const experienceItem = button.closest(".experience-item");
+        const description = experienceItem.querySelector(
+          ".experience-description",
+        );
+        description.classList.toggle("expanded");
+      }
+
+      // Tech stack infinite scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const techScroll = document.querySelector(".tech-scroll");
+        if (
+          techScroll &&
+          !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          const scrollerContent = Array.from(techScroll.children);
+
+          scrollerContent.forEach((item) => {
+            const duplicatedItem = item.cloneNode(true);
+            duplicatedItem.setAttribute("aria-hidden", true);
+            techScroll.appendChild(duplicatedItem);
+          });
+        }
+      });
+
+      // Projects carousel
+      let currentProjectIndex = 0;
+
+      function scrollProjects(direction) {
+        const grid = document.getElementById("projectsGrid");
+        const cards = grid.querySelectorAll(".project-card");
+        const cardWidth = cards[0].offsetWidth + 10; // gap between cards
+
+        if (direction === "next" && currentProjectIndex < cards.length - 2) {
+          currentProjectIndex += 2;
+        } else if (direction === "prev" && currentProjectIndex > 0) {
+          currentProjectIndex -= 2;
+        }
+
+        if (currentProjectIndex > cards.length - 2) {
+          currentProjectIndex = cards.length - 2;
+        }
+        if (currentProjectIndex < 0) {
+          currentProjectIndex = 0;
+        }
+
+        // Calculate scroll to show 2 full cards + peek of next
+        const peekOffset = 45;
+        let scrollAmount;
+
+        if (currentProjectIndex === 0) {
+          scrollAmount = 0;
+        } else {
+          // Scroll to show previous card peeking, current 2 cards, and next card peeking
+          scrollAmount = currentProjectIndex * cardWidth - peekOffset;
+        }
+
+        grid.style.transform = `translateX(-${scrollAmount}px)`;
+        updateArrows(cards.length);
+      }
+
+      function updateArrows(totalCards) {
+        const prevBtn = document.getElementById("prevProject");
+        const nextBtn = document.getElementById("nextProject");
+
+        if (currentProjectIndex === 0) {
+          prevBtn.classList.remove("visible");
+          nextBtn.classList.add("visible");
+        } else if (currentProjectIndex >= totalCards - 2) {
+          prevBtn.classList.add("visible");
+          nextBtn.classList.remove("visible");
+        } else {
+          prevBtn.classList.add("visible");
+          nextBtn.classList.add("visible");
+        }
+
+        prevBtn.classList.toggle("disabled", currentProjectIndex === 0);
+        nextBtn.classList.toggle(
+          "disabled",
+          currentProjectIndex >= totalCards - 2,
+        );
+      }
+
+      // Initialize on load
+      document.addEventListener("DOMContentLoaded", function () {
+        const grid = document.getElementById("projectsGrid");
+        if (grid) {
+          const totalCards = grid.querySelectorAll(".project-card").length;
+          updateArrows(totalCards);
+        }
+      });
+
+      // Contact form handling
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+
+          // Here you would typically send this data to a backend service
+          // For now, we'll just log it and show an alert
+          console.log("Form submitted:", { name, email, message });
+          alert("Thank you for your message! I will get back to you soon.");
+
+          // Reset form
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

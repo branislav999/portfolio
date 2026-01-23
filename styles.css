@@ -29,10 +29,11 @@ html {
 .page-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 220px;
+  padding: 40px 20px;
   display: flex;
   gap: 0;
   position: relative;
+  justify-content: center;
 }
 
 /* SIDEBAR - LEFT SIDE, STICKY */
@@ -162,7 +163,7 @@ html {
 
 .btn-primary:hover {
   background: #000;
-  transform: translateY(-1px);
+  /* transform: translateY(-1px); */
 }
 
 .btn-secondary {
@@ -177,7 +178,9 @@ html {
 
 /* MAIN CONTENT - RIGHT SIDE */
 .main-content {
-  flex: 1;
+  width: 536px;
+  min-width: 0;
+  max-width: 536px;
   padding-left: 40px;
   overflow-x: hidden;
 }
@@ -239,7 +242,7 @@ html {
   transition: all 0.3s ease;
   align-items: flex-start;
   overflow: hidden;
-  min-height: 56px; /* Add this */
+  min-height: 56px;
   border: 1px dashed var(--border-color);
 }
 
@@ -247,20 +250,20 @@ html {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 56px; /* Change from fixed height */
+  min-height: 56px;
   padding: 50px 16px 8px 16px;
-  justify-content: flex-start; /* Change from center */
-  padding-top: 8px; /* Ensure consistent top padding */
+  justify-content: flex-start;
+  padding-top: 8px;
   position: relative;
 }
 
 .company-logo {
-  width: 48px; /* Reduced from 63px */
-  height: 48px; /* Reduced from 63px */
+  width: 48px;
+  height: 48px;
   border-radius: 8px;
   flex-shrink: 0;
   object-fit: contain;
-  margin: 8px; /* Add margin around the image */
+  margin: 8px;
 }
 
 .job-title {
@@ -364,7 +367,6 @@ html {
   color: var(--text-secondary);
 }
 
-/* TECH STACK */
 /* TECH STACK - INFINITE SCROLL */
 .tech-scroll-container {
   width: 100%;
@@ -537,13 +539,11 @@ html {
 }
 
 #prevProject {
-  left: calc(220px - 48px - 155px); /* Move more to the left */
+  left: calc(220px - 48px - 155px);
 }
 
 #nextProject {
-  left: calc(
-    220px + 24px + 220px - 48px + 26px
-  ); /* Adjust to not overflow right */
+  left: calc(220px + 24px + 220px - 48px + 26px);
 }
 
 /* EDUCATION / TIMELINE */
@@ -694,33 +694,162 @@ html {
 }
 
 /* RESPONSIVE */
-@media (max-width: 1200px) {
-  .page-wrapper {
-    padding: 40px 100px;
-  }
-}
 
 @media (max-width: 900px) {
   .page-wrapper {
     flex-direction: column;
     padding: 24px;
+    min-width: auto;
+    max-width: 970px;
+  }
+
+  .main-content {
+    padding-left: 0;
+    max-width: 536px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .sidebar {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto 40px;
+    max-width: 536px;
+    margin: 0 auto 40px auto;
     top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
   }
 
-  .main-content {
-    padding-left: 0;
-    max-width: 600px;
-    margin: 0 auto;
+  /* .sidebar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  } */
+
+  .sidebar-left-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sidebar-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .profile-name {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .profile-title {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .status {
+    margin-bottom: 6px;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  .location {
+    margin-top: 4px;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .contact-item {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .sidebar .btn {
+    width: auto;
+    min-width: 150px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .section-text {
+    font-size: 14px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding: 16px;
+  }
+
+  .sidebar-left,
+  .sidebar-right {
+    width: 100%;
+  }
+
+  .section-text {
+    font-size: 13px;
+  }
+
+  .experience-date-wrapper {
+    position: static;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .expand-btn {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+  }
+
+  .projects-nav {
+    display: none;
+  }
+
+  .projects-scroll-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .project-card {
+    scroll-snap-align: start;
   }
 }

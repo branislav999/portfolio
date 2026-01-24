@@ -742,6 +742,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding-left: 20px;
   }
 
   .sidebar-left {
@@ -756,6 +757,7 @@ html {
     max-width: 200px;
     height: auto;
     margin-bottom: 0;
+    margin-left: 20px;
   }
 
   .profile-name {

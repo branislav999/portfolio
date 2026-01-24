@@ -82,7 +82,8 @@ html {
   gap: 8px;
   font-size: 13px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  margin-left: 5px;
 }
 
 .status-dot {
@@ -91,6 +92,7 @@ html {
   background: var(--accent-green);
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
+  margin-right: 2px;
 }
 /* 
       @frames pulse {
@@ -116,7 +118,8 @@ html {
 .divider {
   height: 1px;
   background: var(--border-color);
-  margin: 20px 0;
+  margin-top: -6px;
+  margin-bottom: 14px;
 }
 
 .contact-item {
@@ -633,12 +636,6 @@ html {
   grid-column: 1 / -1;
 }
 
-@media (max-width: 900px) {
-  .links-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* CONTACT FORM */
 .contact-form {
   background: var(--bg-card);
@@ -696,6 +693,12 @@ html {
 /* RESPONSIVE */
 
 @media (max-width: 900px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
   .page-wrapper {
     flex-direction: column;
     padding: 24px;
@@ -705,8 +708,8 @@ html {
 
   .main-content {
     padding-left: 0;
-    max-width: 536px;
-    width: 100%;
+    max-width: 496px;
+    width: 100%; /* Change from 100% if needed */
     margin: 0 auto;
   }
 

@@ -852,4 +852,8 @@ html {
   .project-card {
     scroll-snap-align: start;
   }
+
+  .job-title {
+    padding-right: 36px;
+  }
 }
